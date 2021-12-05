@@ -1,4 +1,7 @@
-const Potion = require('../Lib/Potion');
+// const Potion = require('../Lib/Potion');
+
+// jest.mock('../Lib/Potion');
+// console.log(new Potion());
 
 function Potion(name) {
     this.types = ['strength', 'agility', 'health'];
