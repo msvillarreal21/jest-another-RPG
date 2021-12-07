@@ -1,7 +1,7 @@
 const Potion = require('../Lib/Potion');
 
-jest.mock('../Lib/Potion');
-console.log(new Potion());
+// jest.mock('../Lib/Potion');
+// console.log(new Potion());
 
 function Player(name = '') {
     this.name = name;

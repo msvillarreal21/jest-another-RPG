@@ -18,5 +18,9 @@
   "homepage": "https://github.com/msvillarreal21/jest-another-RPG#readme",
   "devDependencies": {
     "jest": "^27.4.3"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0",
+    "node": "^17.2.0"
   }
 }
