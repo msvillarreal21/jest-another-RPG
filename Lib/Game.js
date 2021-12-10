@@ -31,7 +31,7 @@ Game.prototype.initializeGame = function() {
         this.startNewBattle();
 
         //test the object creation
-        console.log(this.startNewBattle());
+        // console.log(this.startNewBattle());
     });
 
 };
@@ -46,6 +46,8 @@ Game.prototype.startNewBattle = function() {
     console.log('Your stats are as follows');
     console.table(this.player.getStats());
     console.log(this.currentEnemy.getDescription());
+    
+    this.battle();
 };
 
 //If player turn: 
@@ -78,6 +80,12 @@ Game.prototype.battle = function() {
                         message: 'Which potion would you like to use?',
                         name: 'action',
                         choices: this.player.getInventory().map((item, index) =>  `${index + 1}: ${item.name}`)
+                    })
+                    .then(({ action }) => {
+                        const potionDetails = action.split(': ');
+                        
+                        this.player.usePotion(potionDetails[0] - 1);
+                        console.log(`You used a ${potionDetails[1]} potion.`);
                     });
                 
                 } else {
