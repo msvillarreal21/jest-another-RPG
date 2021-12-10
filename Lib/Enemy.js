@@ -10,7 +10,7 @@ function Enemy(name, weapon) {
     this.agility = Math.floor(Math.random() * 5 + 5);
 }
 Enemy.prototype.getHealth = function() {
-    return `${this.name}'s health is now ${this.health}!`;
+    return `The ${this.name}'s health is now ${this.health}!`;
 };
 
 //
