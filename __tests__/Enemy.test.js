@@ -1,4 +1,3 @@
-const { test, expect } = require('@jest/globals');
 const Enemy = require('../Lib/Enemy');
 const Potion = require('../Lib/Potion');
 
@@ -45,11 +44,11 @@ test("subtracts from enemy's health", () => {
 });
 
 test('gets enemys attack value', () => {
-    const enemy = new Enemy ('Dave');
+    const enemy = new Enemy ('goblin', 'sword');
     enemy.strength = 10;
 
-    expect(enemy.getAttackedValue()).toBeGreaterThanOrEqual(5);
-    expect(enemy.getAttackedValue()).toBeLessThanOrEqual(15);
+    expect(enemy.getAttackValue()).toBeGreaterThanOrEqual(5);
+    expect(enemy.getAttackValue()).toBeLessThanOrEqual(15);
 });
 
 //this helps to make sure that the string contains both the name and weapon

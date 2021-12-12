@@ -1,68 +1,44 @@
 const Potion = require('../Lib/Potion');
+const Character = require('./Character');
+
 
 // jest.mock('../Lib/Potion');
 // console.log(new Potion());
 
-function Player(name = '') {
-    this.name = name;
+class Player extends Character  {
+    constructor(name = '') {
+        //call parent constructor here:
+        super();
+        this.inventory = [new Potion('health'), new Potion ()];
+ 
+}
+//inherit prototype methods from Character here:
+// Player.prototype = Object.create(Character.prototype);
 
-    this.health = Math.floor(Math.random() * 10 + 95);
-    this.strength = Math.floor(Math.random() * 5 + 7);
-    this.agility = Math.floor(Math.random() * 5 + 7);
-    this.inventory = [new Potion('health'), new Potion()];
 
-
-    //returns an object with the various player properties
-    Player.prototype.getStats = function() {
-        return {
-            potions: this.inventory.length,
-            health: this.health,
-            strength: this.strength,
-            agility: this.agility
+//returns an object with the various player properties
+getStats() {
+    return {
+        potions: this.inventory.length,
+        health: this.health,
+        strength: this.strength,
+        agility: this.agility
         };
-    };
+}
 
     //returns the inventory array or false if empty
-    Player.prototype.getInventory = function () {
+getInventory() {
         if (this.inventory.length) {
             return this.inventory;
         }
         return false;
-    };
+    }
 
-    //returns a string with the players health
-    Player.prototype.getHealth = function() {
-        return `${this.name}'s health is now ${this.health}!`;
-    };
-
-    //
-    Player.prototype.isAlive = function () {
-        if (this.health === 0) {
-            return false;
-        }
-        return true;
-    };
-
-    Player.prototype.reduceHealth = function(health) {
-        this.health -= health;
-
-        if(this.health <0) {
-            this.health = 0;
-        }
-    };
-
-    Player.prototype.getAttackedValue = function() {
-        const min = this.strength - 5;
-        const max = this.strength + 5;
-
-        return Math.floor(Math.random() * (max - min) + min);
-    };
-
-    Player.prototype.addPotion = function(potion) {
+addPotion(potion) {
         this.inventory.push(potion);
-    };
+    }
 
-    Player.prototype.usePotion = function(index) {
+usePotion(index) {
         const potion = this.inventory.splice(index, 1)[0];
 
         switch (potion.name) {
@@ -76,8 +52,6 @@ function Player(name = '') {
                 this.strength += potion.value;
                 break;
         }
-    };
-
+    }
 }
-
 module.exports = Player;

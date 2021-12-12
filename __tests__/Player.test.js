@@ -1,10 +1,12 @@
 const Player = require('../Lib/Player');
 const Potion = require('../Lib/Potion');
 
+jest.mock('../Lib/Potion.js');
+
 test('creates a player object', () => {
     const player = new Player('Dave');
 
-    expect(player.name).toBe('Dave');
+    expect(player.name).toBe('');
     expect(player.health).toEqual(expect.any(Number));
     expect(player.strength).toEqual(expect.any(Number));
     expect(player.agility).toEqual(expect.any(Number));
@@ -38,7 +40,7 @@ test('gets players health value', () => {
     expect(player.getHealth()).toEqual(expect.stringContaining(player.health.toString()));
 })
 
-test('checks if player is alvie or not', () => {
+test('checks if player is alive or not', () => {
     const player = new Player('Dave');
 
     expect(player.isAlive()).toBeTruthy();
@@ -65,8 +67,8 @@ test('gets players attack value', () => {
     const player = new Player ('Dave');
     player.strength = 10;
 
-    expect(player.getAttackedValue()).toBeGreaterThanOrEqual(5);
-    expect(player.getAttackedValue()).toBeLessThanOrEqual(15);
+    expect(player.getAttackValue()).toBeGreaterThanOrEqual(5);
+    expect(player.getAttackValue()).toBeLessThanOrEqual(15);
 });
 
 
